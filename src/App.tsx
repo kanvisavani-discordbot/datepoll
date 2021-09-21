@@ -1,26 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import React from 'react';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
+import {NewHangouts} from './components/NewHangouts/NewHangouts';
+import {EventHangouts} from './components/EventHangouts/EventHangouts';
+import {CreateHangouts} from "./components/CreateHangouts/CreateHangouts";
+import {HangoutList} from "./components/HangoutList/HangoutList";
+import {FinalResult} from "./components/FinalResult/FinalResult";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = () =>  {
+    return (
+        <div>
+            <Router>
+                <switch>
+                    <Route path='/' exact render={() => (<> <CreateHangouts/></>)}/>
+                    <Route path='/newHangouts' component={()=>(<> <NewHangouts/></>)}/>
+                    <Route path='/hangoutList' component={()=>(<> <HangoutList/></>)}/>
+                    <Route path='/eventHangouts' component={()=>(<> <EventHangouts/></>)}/>
+                    <Route path='/finalResult' component={()=>(<> <FinalResult/></>)}/>
+                </switch>
+            </Router>
+        </div>
+    );
 }
 
 export default App;

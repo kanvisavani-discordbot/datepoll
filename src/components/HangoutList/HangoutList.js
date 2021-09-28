@@ -15,7 +15,7 @@ export const HangoutList =()=>{
         console.log(events);
         var setChk=false;
         events.map(event => {
-            if (event.eventDate_id === dateId && userId === event.user_id){
+            if (event.eventdate_id == dateId && userId == event.user_id){
                 setChk= true;
             }
         })
@@ -87,13 +87,13 @@ export const HangoutList =()=>{
             <div>
                 <p>This is the description of the hangout.</p>
 
-                <table>
+                <table class="table">
                     <thead>
                     <tr>
                         <th>Name</th>
                         {
                             dates.map(date=> (
-                                <th key={date.id}>{date.eventDate} {date.eventTime}</th>
+                                <th key={date.id}>{date.eventdate} {date.eventtime}</th>
                             ))}
                     </tr>
                     </thead>
@@ -101,7 +101,7 @@ export const HangoutList =()=>{
                     {
                         items.map(item=> (
                             <tr key={item.id}>
-                                <td>{item.Name}</td>
+                                <td>{item.name}</td>
                                 {dates.map(date=>(
                                     <td key={date.id}><input type="checkbox" checked={
                                         chkValue(item.id,date.id)
@@ -118,7 +118,7 @@ export const HangoutList =()=>{
                     </option>
                     {dates.map(date=>(
                         <option key={date.id}>
-                            {date.eventDate} {date.eventTime}
+                            {date.eventdate} {date.eventtime}
                         </option>
                     ))}
                 </select><br/>

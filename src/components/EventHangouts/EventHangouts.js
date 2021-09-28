@@ -11,10 +11,9 @@ import {Link} from 'react-router-dom';
      const opt =[];
 
      const chkValue = (userId,dateId)=>{
-         console.log(events);
          var setChk=false;
          events.map(event => {
-             if (event.eventDate_id === dateId && userId === event.user_id){
+             if (event.eventdate_id == dateId && userId == event.user_id){
                  setChk= true;
              }
 
@@ -25,12 +24,11 @@ import {Link} from 'react-router-dom';
      const sendData = ()=>{
          var user_id;
          var name=document.getElementById("myName").value;
-
          fetch("https://apites1.herokuapp.com/setUsers?name="+name)
              .then(res => res.json())
              .then(
                  (result) => {
-                     user_id=result[0].id;
+                     user_id=result[0].max;
                      opt.map((Id) => {
                          var res = fetch("https://apites1.herokuapp.com/setEvents?eventDate_id=" + Id + "&user_id=" + user_id)
                          console.log(res);
@@ -87,13 +85,13 @@ import {Link} from 'react-router-dom';
                     <p>This is the description of the hangout.</p>
                     <label>Name:</label>
                     <input type="text" id="myName"/>
-                    <table>
+                    <table class="table">
                         <thead>
                         <tr>
                             <th>Name</th>
                             {
                                 dates.map(date=> (
-                                        <th key={date.id}>{date.eventDate} {date.eventTime}</th>
+                                        <th key={date.id}>{date.eventdate} {date.eventtime}</th>
                                 ))}
                         </tr>
                         </thead>
@@ -111,7 +109,7 @@ import {Link} from 'react-router-dom';
                         {
                             items.map(item=> (
                                 <tr key={item.id}>
-                                    <td>{item.Name}</td>
+                                    <td>{item.name}</td>
                                     {dates.map(date=>(
                                             <td key={date.id}><input type="checkbox" checked={
                                                 chkValue(item.id,date.id)

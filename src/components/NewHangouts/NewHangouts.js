@@ -5,13 +5,12 @@ import {Link} from 'react-router-dom';
 export const NewHangouts = () => {
     var i=1;
     const addEventDates = () => {
-        debugger;
         while(i>0){
-             debugger;
              var dateValue= new Date(document.querySelectorAll('#hangoutSchedule'+i+' input[type="date"]')[0].value);
              var timeValue=document.querySelectorAll('#hangoutSchedule'+i+' input[type="time"]')[0].value;
              timeValue+=':00';
-             var dd = dateValue.getDate();
+             debugger;
+             var dd = dateValue.getDate()+1;
              var mm = dateValue.getMonth()+1;
              var yy = dateValue.getFullYear().toString().substr(-2);
              if(dd<10)
@@ -24,6 +23,7 @@ export const NewHangouts = () => {
                 mm='0'+mm;
              }
             dateValue = dd+'/'+mm+'/'+yy;
+            debugger;
             const response =  fetch("https://apites1.herokuapp.com/setEventDates?eventDate="+dateValue+"&eventTime="+timeValue)
             console.log(response);
             i--;

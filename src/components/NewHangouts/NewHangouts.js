@@ -24,7 +24,7 @@ export const NewHangouts = () => {
                 mm='0'+mm;
              }
             dateValue = dd+'/'+mm+'/'+yy;
-            const response =  fetch("http://localhost:4449/setEventDates?eventDate="+dateValue+"&eventTime="+timeValue)
+            const response =  fetch("https://apites1.herokuapp.com/setEventDates?eventDate="+dateValue+"&eventTime="+timeValue)
             console.log(response);
             i--;
         }

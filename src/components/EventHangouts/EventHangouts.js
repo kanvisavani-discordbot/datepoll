@@ -26,13 +26,13 @@ import {Link} from 'react-router-dom';
          var user_id;
          var name=document.getElementById("myName").value;
 
-         fetch("http://localhost:4449/setUsers?name="+name)
+         fetch("https://apites1.herokuapp.com/setUsers?name="+name)
              .then(res => res.json())
              .then(
                  (result) => {
                      user_id=result[0].id;
                      opt.map((Id) => {
-                         var res = fetch("http://localhost:4449/setEvents?eventDate_id=" + Id + "&user_id=" + user_id)
+                         var res = fetch("https://apites1.herokuapp.com/setEvents?eventDate_id=" + Id + "&user_id=" + user_id)
                          console.log(res);
                      })
                  })
@@ -50,19 +50,19 @@ import {Link} from 'react-router-dom';
      }
 
      useEffect(() => {
-         fetch("http://localhost:4449/getUsers")
+         fetch("https://apites1.herokuapp.com/getUsers")
              .then(res => res.json())
              .then(
                  (result) => {
                      setIsLoaded(false);
                      setItems(result);
-                     fetch("http://localhost:4449/getEventDates")
+                     fetch("https://apites1.herokuapp.com/getEventDates")
                          .then(res => res.json())
                          .then(
                              (result) => {
                                  setIsLoaded(false);
                                  setDates(result);
-                                 fetch("http://localhost:4449/getEvents")
+                                 fetch("https://apites1.herokuapp.com/getEvents")
                                      .then(res => res.json())
                                      .then(
                                          (result) => {

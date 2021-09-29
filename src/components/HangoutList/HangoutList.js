@@ -86,8 +86,7 @@ export const HangoutList =()=>{
         return (
             <div>
                 <p>This is the description of the hangout.</p>
-
-                <table class="table">
+                <table className="table">
                     <thead>
                     <tr>
                         <th>Name</th>

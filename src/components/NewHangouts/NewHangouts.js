@@ -9,7 +9,6 @@ export const NewHangouts = () => {
              var dateValue= new Date(document.querySelectorAll('#hangoutSchedule'+i+' input[type="date"]')[0].value);
              var timeValue=document.querySelectorAll('#hangoutSchedule'+i+' input[type="time"]')[0].value;
              timeValue+=':00';
-             debugger;
              var dd = dateValue.getDate()+1;
              var mm = dateValue.getMonth()+1;
              var yy = dateValue.getFullYear().toString().substr(-2);
@@ -23,8 +22,7 @@ export const NewHangouts = () => {
                 mm='0'+mm;
              }
             dateValue = dd+'/'+mm+'/'+yy;
-            debugger;
-            const response =  fetch("https://apites1.herokuapp.com/setEventDates?eventDate="+dateValue+"&eventTime="+timeValue)
+            const response = fetch("https://apites1.herokuapp.com/setEventDates?eventDate="+dateValue+"&eventTime="+timeValue)
             console.log(response);
             i--;
         }
@@ -42,16 +40,16 @@ export const NewHangouts = () => {
     return (
         <div className="newHangouts">
             <label>New Hangouts:<br/> <p>This is the description of the hangout.</p></label>
-            <div id="schedules">
+            <form id="schedules" className="md-form">
             <div id="hangoutSchedule1">
             <label>Date:</label>
             <input type="date"/>
             <label>Time:</label>
             <input type="time"/>
             </div>
-            </div>
+            </form>
             <button onClick={addElements}>Add another option</button>
-            <Link onClick={addEventDates} to="/eventHangouts" >Done</Link>
+            <Link className="btn btn-success" onClick={addEventDates} to="/eventHangouts" >Done</Link>
         </div>
     );
 }

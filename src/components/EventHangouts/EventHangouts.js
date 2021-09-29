@@ -85,7 +85,7 @@ import {Link} from 'react-router-dom';
                     <p>This is the description of the hangout.</p>
                     <label>Name:</label>
                     <input type="text" id="myName"/>
-                    <table class="table">
+                    <table className="table">
                         <thead>
                         <tr>
                             <th>Name</th>
